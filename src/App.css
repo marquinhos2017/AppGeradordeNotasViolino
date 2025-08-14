@@ -1,38 +1,195 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #6a5acd, #9370db);
   min-height: 100vh;
+}
+
+.app {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 80px 20px 80px;
   color: white;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+.title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
+.form-group {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.generate-btn {
+  background-color: #ffcc00;
+  color: black;
+  font-size: 18px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.generate-btn:hover {
+  background-color: #ffdb4d;
+}
+
+.scale-card {
+  background: white;
+  color: black;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 25px;
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.scale-card p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: #ffcc00;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-in-out;
+}
+
+.scale-appear {
+  animation: popScale 0.5s ease-in-out;
+}
+
+.bounce {
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-10px);
   }
+
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popScale {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bottom-nav .nav-item a {
+  text-decoration: none;
+  /* remove sublinhado */
+  color: inherit;
+  /* mantém a cor do nav-item */
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  /* remove sublinhado */
+}
+
+.nav-item i,
+.nav-item svg,
+.nav-item span {
+  text-decoration: none;
+  /* remove sublinhado dos ícones */
+  display: inline-block;
+  /* evita que o underline apareça */
 }

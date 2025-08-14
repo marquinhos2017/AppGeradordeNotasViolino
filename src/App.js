@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-function App() {
+import { FaMusic, FaGuitar, FaCog } from "react-icons/fa";
+import Escalas from "./pages/escalas";
+import Acordes from "./pages/Acordes";
+import Config from "./pages/Config";
+import "./App.css";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Escalas />} />
+          <Route path="/acordes" element={<Acordes />} />
+          <Route path="/config" element={<Config />} />
+        </Routes>
+
+        {/* Bottom Navigation */}
+        <div className="bottom-nav">
+          <Link to="/" className="nav-item">
+            <FaMusic size={24} />
+            <span>Escalas</span>
+          </Link>
+          <Link to="/acordes" className="nav-item">
+            <FaGuitar size={24} />
+            <span>Acordes</span>
+          </Link>
+          <Link to="/config" className="nav-item">
+            <FaCog size={24} />
+            <span>Config</span>
+          </Link>
+        </div>
+      </div>
+    </Router>
   );
 }
-
-export default App;
