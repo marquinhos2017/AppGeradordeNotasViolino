@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Acordes() {
     const tons = ["C", "D", "E", "F", "G", "A", "B"];
     const tipos = ["Maior", "Menor"];
     const [tomSelecionado, setTomSelecionado] = useState("C");
     const [tipoSelecionado, setTipoSelecionado] = useState("Maior");
-    const notasCromaticas = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-
 
     const gerarAcorde = (tom, tipo) => {
         const notasCrom = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
@@ -15,11 +13,11 @@ export default function Acordes() {
         let terca, quinta;
 
         if (tipo === "Maior") {
-            terca = notasCrom[(indice + 4) % 12]; // +4 semitons
-            quinta = notasCrom[(indice + 7) % 12]; // +7 semitons
+            terca = notasCrom[(indice + 4) % 12];
+            quinta = notasCrom[(indice + 7) % 12];
         } else {
-            terca = notasCrom[(indice + 3) % 12]; // +3 semitons
-            quinta = notasCrom[(indice + 7) % 12]; // +7 semitons
+            terca = notasCrom[(indice + 3) % 12];
+            quinta = notasCrom[(indice + 7) % 12];
         }
 
         return {
@@ -33,10 +31,26 @@ export default function Acordes() {
         };
     };
 
-
     const acorde = gerarAcorde(tomSelecionado, tipoSelecionado);
 
-    // estilos inline
+    // Carregar script do AdSense
+    useEffect(() => {
+        const script = document.createElement("script");
+        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+        script.async = true;
+        script.setAttribute("data-ad-client", "ca-pub-XXXXXXXXXXXXXX"); // Coloque seu ID AdSense aqui
+        document.body.appendChild(script);
+    }, []);
+
+    useEffect(() => {
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+            console.error("Adsense error:", e);
+        }
+    }, []);
+
+
     const styles = {
         app: {
             maxWidth: "400px",
@@ -77,6 +91,11 @@ export default function Acordes() {
             fontSize: "1rem",
             marginBottom: "8px",
             lineHeight: "1.4"
+        },
+        adContainer: {
+            margin: "20px 0",
+            display: "flex",
+            justifyContent: "center"
         }
     };
 
@@ -109,6 +128,23 @@ export default function Acordes() {
                         </option>
                     ))}
                 </select>
+            </div>
+
+            {/* Banner de anúncio */}
+            <div style={styles.adContainer}>
+                <ins className="adsbygoogle"
+                    style={{ display: "block", width: "300px", height: "250px" }}
+                    data-ad-client="ca-pub-XXXXXXXXXXXXXX" // Seu ID AdSense
+                    data-ad-slot="YYYYYYYYYY"></ins>
+
+            </div>
+            <div style={styles.adContainer}>
+                <ins className="adsbygoogle"
+                    style={{ display: "block", width: "300px", height: "250px" }}
+                    data-ad-client="ca-pub-XXXXXXXXXXXXXX"
+                    data-ad-slot="YYYYYYYYYY"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
             </div>
 
             <div style={styles.card}>
